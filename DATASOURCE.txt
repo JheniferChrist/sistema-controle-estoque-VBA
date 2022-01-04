@@ -1,0 +1,84 @@
+//REGISTRO
+//(LISTVIEW) (BEFORELABELEDIT)
+
+Private Sub ListView1_BeforeLabelEdit(Cancel As Integer)
+
+End Sub
+
+Private Sub ListView1_BeforeUpdate(ByVal Cancel As MSForms.ReturnBoolean)
+
+End Sub
+
+Private Sub TextBox1_Change()
+
+End Sub
+
+Private Sub UserForm_Initialize()
+Call CriarCabecalho
+Call TrazDadosDaPlanilha
+
+End Sub
+
+Sub CriarCabecalho()
+
+    With ListView1
+        .View = lvwReport
+        .FullRowSelect = True
+
+        With .ColumnHeaders
+            .Clear
+            .Add , , "Data", 100
+            .Add , , "Usuário", 140, 2
+            .Add , , "Nome", 170, 2
+            .Add , , "Código", 140, 2
+            .Add , , "Produto", 180, 2
+            .Add , , "Quantidade", 100, 2
+                    
+        End With
+    
+    End With
+
+End Sub
+
+
+Sub TrazDadosDaPlanilha()
+
+Dim Wplan       As Worksheet
+Dim data        As String
+Dim nome        As String
+Dim usuário     As Integer
+Dim codigo      As Integer
+Dim produto     As String
+Dim quantidade  As Integer
+
+
+Set Wplan = Planilha1
+lin = 5
+
+Wplan.Activate
+
+ListView1.ListItems.Clear
+
+With Wplan
+
+        While .Cells(lin, 4).Value <> ""
+        
+                With ListView1
+                    
+                        Set lvItem = ListView1.ListItems.Add(, , Format(Wplan.Cells(lin, 1).Value))
+                            
+                            
+                            lvItem.ListSubItems.Add , , Wplan.Cells(lin, 2).Value
+                            lvItem.ListSubItems.Add , , Wplan.Cells(lin, 3).Value
+                            lvItem.ListSubItems.Add , , Wplan.Cells(lin, 4).Value
+                            lvItem.ListSubItems.Add , , Wplan.Cells(lin, 5).Value
+                            lvItem.ListSubItems.Add , , Wplan.Cells(lin, 6).Value
+                            lvItem.ListSubItems.Add , , Wplan.Cells(lin, 7).Value
+                End With
+
+            lin = lin + 1
+        
+        Wend
+End With
+
+End Sub

@@ -1,0 +1,101 @@
+//MÓDULO1
+//(GERAL) (SALVAR)
+
+Sub Salvar()
+
+On Error GoTo erro
+
+If UserForm1.TCod.Value = "" Then
+Exit Sub
+End If
+
+If UserForm1.Tqty.Value = "" Then
+UserForm1.Tqty.Value = "1"
+End If
+
+If UserForm1.Tuser.Value = "" Then
+Exit Sub
+End If
+
+Dim linha As Double
+linha = 3
+
+If UserForm1.Titem.Value = "" Then
+
+    With Planilha2
+        
+        Do
+                linha = linha + 1
+                
+                If .Cells(linha, 1).Text = UserForm1.TCod.Text Then
+                UserForm1.Titem = .Cells(linha, 2).Text
+                
+                Exit Do
+                
+                End If
+            
+        Loop Until .Cells(linha, 1).Value = ""
+        
+    
+    End With
+    
+
+End If
+
+linha = 3
+
+If UserForm1.Tnome.Value = "" Then
+
+    With Planilha3
+        
+        Do
+                linha = linha + 1
+                
+                If .Cells(linha, 1).Text = UserForm1.Tuser.Text Then
+                UserForm1.Tnome = .Cells(linha, 2).Text
+                
+                Exit Do
+                
+                End If
+            
+        Loop Until .Cells(linha, 1).Value = ""
+        
+    
+    End With
+    
+
+End If
+
+linha = 4
+
+With Planilha1
+           Do
+                linha = linha + 1
+            
+        Loop Until .Cells(linha, 4).Value = ""
+        .Cells(linha, 1).Value = UserForm1.Tdata.Text
+        .Cells(linha, 3).Value = UserForm1.Tnome.Text
+        .Cells(linha, 4).Value = UserForm1.TCod.Text
+        .Cells(linha, 5).Value = UserForm1.Titem.Text
+        .Cells(linha, 6).Value = UserForm1.Tqty.Value
+        .Cells(linha, 2).Value = UserForm1.Tuser.Text
+         
+                    UserForm1.Titem = ""
+                    UserForm1.Tqty = ""
+                    UserForm1.TCod = ""
+                    UserForm1.Tnome = ""
+                    UserForm1.Tuser = ""
+                    UserForm1.Tuser.SetFocus
+        
+End With
+                    
+        
+Exit Sub
+
+
+erro:
+
+MsgBox "Erro!", vbCritical, "ERRO"
+
+
+End Sub

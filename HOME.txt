@@ -1,0 +1,67 @@
+//USERFORM1
+
+Private Sub acessoadm_Click()
+ADMIN.Show
+
+End Sub
+
+Private Sub sairsistema_Click()
+Unload Me
+ThisWorkbook.Close savechanges:=True
+Application.Quit
+
+End Sub
+
+Private Sub TCod_Exit(ByVal Cancel As MSForms.ReturnBoolean)
+
+If Tuser <> "" Then
+
+Módulo1.Salvar
+
+Tdata.Value = VBA.Now
+
+End If
+
+End Sub
+
+Private Sub TextBox1_Change()
+TextBox1 = VBA.Time
+
+End Sub
+
+Private Sub Titem_Change()
+
+Titem = VBA.UCase(Titem.Text)
+
+End Sub
+
+Private Sub Tnome_Change()
+
+Tnome = VBA.UCase(Tnome.Text)
+
+End Sub
+
+Private Sub ToggleButton4_Click()
+registro.Show
+
+End Sub
+
+Private Sub Tqty_AfterUpdate()
+UserForm1.Tuser.SetFocus
+
+End Sub
+
+Private Sub UserForm_Initialize()
+
+Tdata.Value = VBA.Now
+
+End Sub
+
+Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
+
+Cancel = True
+
+End Sub
+
+Private Sub UserForm_Terminate()
+End Sub

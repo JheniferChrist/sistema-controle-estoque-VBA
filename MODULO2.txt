@@ -1,0 +1,26 @@
+//MÓDULO2
+//(GERAL) (BARRA_EVOLUCAO)
+
+Sub Barra_Evolucao()
+Dim Total As Long
+Dim x As Long
+Dim Largura As Long
+Dim PERCENTUAL As Double
+
+Total = 10000
+BarraEvolucao.Show
+Largura = BarraEvolucao.lblBarraEvolucao.Width
+
+For x = 1 To Total
+DoEvents
+PERCENTUAL = x / Total
+BarraEvolucao.lblBarraEvolucao.Width = PERCENTUAL * Largura
+BarraEvolucao.lblValor = Round(PERCENTUAL * 100, 1) & "%"
+
+Next
+
+BarraEvolucao.Caption = "Aguarde, iniciando o sistema!"
+Unload BarraEvolucao
+UserForm1.Show
+
+End Sub
