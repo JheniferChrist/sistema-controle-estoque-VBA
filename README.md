@@ -20,6 +20,22 @@
 
 Project using Visual Basic for Applications - VBA for inventory control, consists of reading the user's badge, product to be withdrawn and recording in the 'database' (spreadsheet) with updated date and time.
 
+## 🚀 **Status**
+
+Concluded ✔
+
+## ⚙ **Features**
+
+- [x] Badge registration
+- [x] Item registration
+- [x] Barcode Reader
+- [x] Password Lock
+- [x] Home Screen
+- [x] "Admin" screen
+- [x] Exit Button (Custom)
+- [x] View of registered items
+
+
 ## :dizzy: **Screen Shots**
 
 * 🏚 Home
